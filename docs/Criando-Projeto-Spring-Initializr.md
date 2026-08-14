@@ -2,7 +2,7 @@
 
 O [Spring Initializr](https://start.spring.io) é a forma mais simples de gerar a estrutura inicial de um projeto Spring Boot, direto pelo navegador.
 
-![Spring Initializr](../assets/spring-initializr.png)
+![Spring Initializr](assets/spring-initializr.png)
 
 ## Passo a passo
 
@@ -56,7 +56,7 @@ Linguagem moderna, interoperável com Java, que roda na JVM. É mais concisa, te
 ## 🏷️ Project Metadata
 
 ### Group
-Identifica a organização ou empresa dona do projeto, seguindo o padrão de domínio invertido (ex: `com.example`). Funciona como o "namespace raiz" do projeto.
+Identifica a organização ou empresa dona do projeto, seguindo o padrão de domínio invertido (ex: `com.example`, `br.com.dio`). Funciona como o "namespace raiz" do projeto.
 
 ### Artifact
 Nome do projeto/aplicação em si (ex: `demo`). É usado para gerar o nome do arquivo final (jar/war) e o nome da pasta do projeto.
@@ -83,14 +83,46 @@ O Java segue um ciclo de lançamentos onde nem toda versão é **LTS (Long-Term 
 | Versão | Tipo | Observação |
 |---|---|---|
 | 17 | LTS | Suporte de longo prazo, muito usada em produção |
-| 21 | LTS | Versão LTS mais recente estável, traz Virtual Threads |
-| 25 | LTS | Próxima LTS do ciclo |
+| 21 | LTS | Versão LTS estável mais adotada atualmente, traz Virtual Threads |
+| 25 | LTS | LTS mais recente do ciclo |
 | 26 | Não-LTS | Versão de curto prazo, focada em novidades e testes |
 
 ### Diferença entre as versões
 
 - **Versões LTS** recebem atualizações de segurança e correções por vários anos e são recomendadas para projetos em produção.
-- **Versões não-LTS** (releases intermediários, a cada 6 meses) trazem novidades mais rapidamente, mas têm suporte curto (poucos meses), sendo indicadas apenas para testar recursos novos, não para produção.
+- **Versões não-LTS** (releases intermediários, lançados a cada 6 meses) trazem novidades mais rapidamente, mas têm suporte curto (poucos meses), sendo indicadas apenas para testar recursos novos, não para produção.
+
+---
+
+## 🧩 Annotations (Anotações)
+
+Annotations são **metadados** adicionados ao código Java com a sintaxe `@NomeDaAnotação`. Elas não alteram diretamente a lógica do programa, mas fornecem instruções para o compilador, para ferramentas (como o Lombok) ou, no caso do Spring, para o **container de injeção de dependência**, que lê essas anotações em tempo de execução para saber como montar e conectar os componentes da aplicação.
+
+Exemplos comuns no ecossistema Spring:
+
+| Annotation | Para que serve |
+|---|---|
+| `@SpringBootApplication` | Marca a classe principal, habilitando auto-configuração e escaneamento de componentes |
+| `@RestController` | Marca uma classe como controlador REST, cujos métodos retornam dados (JSON) direto no corpo da resposta |
+| `@Service` | Marca uma classe como camada de regra de negócio |
+| `@Repository` | Marca uma classe como camada de acesso a dados |
+| `@Autowired` | Solicita ao Spring que injete automaticamente uma dependência |
+| `@GetMapping` / `@PostMapping` | Mapeiam uma rota HTTP para um método |
+
+---
+
+## 🫘 Beans
+
+Um **Bean** é qualquer objeto que é **criado, gerenciado e controlado pelo Spring**, em vez de ser instanciado manualmente com `new` pelo próprio desenvolvedor. Esses objetos ficam registrados dentro do **Spring Container (ApplicationContext)**, que é responsável por criar as instâncias, injetar as dependências necessárias entre elas e controlar seu ciclo de vida (criação, uso e destruição).
+
+Formas mais comuns de declarar um Bean:
+
+- Anotando uma classe com `@Component`, `@Service`, `@Repository` ou `@Controller` — o Spring encontra a classe automaticamente durante o escaneamento de componentes
+- Anotando um método com `@Bean` dentro de uma classe marcada com `@Configuration` — o retorno do método vira um Bean gerenciado
+
+Isso é o que permite a **Injeção de Dependência (DI)**: em vez de uma classe criar suas próprias dependências, ela apenas as declara (geralmente como parâmetro de construtor) e o Spring se encarrega de fornecer o Bean já pronto.
+
+> 💡 É exatamente isso que aparece no painel **Beans** do Spring Boot Dashboard (visível no VS Code) — a lista de todos os objetos que o Spring está gerenciando na aplicação em execução.
 
 ---
 ⬅️ [Voltar ao README principal](../README.md)
