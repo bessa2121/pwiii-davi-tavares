@@ -13,6 +13,9 @@ Jogo da Velha (Tic-Tac-Toe) desenvolvido com **React + TypeScript** e **Vite**.
 | 📁 Estrutura do Projeto | Organização de pastas e arquivos | [docs/Estrutura.md](docs/Estrutura.md) |
 | ⚙️ Como Rodar | Instalação, execução e scripts | [docs/Como-Rodar.md](docs/Como-Rodar.md) |
 | 🎯 Objetivo | Propósito do projeto | [docs/Objetivo.md](docs/Objetivo.md) |
+| 🧠 IntelliJ IDEA | Criando o projeto pela IDE | [docs/Criando-Projeto-IntelliJ.md](docs/Criando-Projeto-IntelliJ.md) |
+| 💻 VS Code | Criando o projeto pelo VS Code | [docs/Criando-Projeto-VSCode.md](docs/Criando-Projeto-VSCode.md) |
+| 🌱 Spring Initializr | Criando o projeto pelo navegador + conceitos (Lombok, Maven, Gradle, Kotlin, Java LTS etc.) | [docs/Criando-Projeto-Spring-Initializr.md](docs/Criando-Projeto-Spring-Initializr.md) |
 
 ---
 
